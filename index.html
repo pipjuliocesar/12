@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Beneficios: La Ruta Más Viable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .kpi-icon {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+        .flowchart-step {
+            border: 2px solid #7FB800;
+            background-color: #ffffff;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+        }
+        .flowchart-arrow {
+            color: #7FB800;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: bold;
+        }
+        .flowchart-step .icon {
+            font-size: 2.5rem;
+            color: #00A6ED;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md py-6">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl md:text-5xl font-black text-[#00A6ED]">Análisis de Beneficios para Veteranos</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-600">Dos caminos, un objetivo: un beneficio económico justo. Pero solo uno es viable.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section class="text-center mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Comparación Directa de Beneficios Mensuales</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-8">A primera vista, una propuesta ofrece un monto mayor. Sin embargo, la viabilidad legal y presupuestal es el factor decisivo. El beneficio real es aquel que se puede cobrar.</p>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="chart-container">
+                    <canvas id="benefitsComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <section id="path-a" class="border-4 border-dashed border-[#F6511D] rounded-lg p-6 bg-red-50">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#F6511D]">Camino 1: "Veterano de la Pacificación Nacional"</h2>
+                <div class="text-center mb-8">
+                    <span class="text-6xl font-black text-[#F6511D] bg-white px-4 py-2 rounded-lg shadow-lg">PROPUESTA INVIABLE</span>
+                </div>
+                <p class="text-center text-gray-700 mb-8">La propuesta de Ley N.º 3385/2022-CR, aunque bien intencionada, ha sido declarada no viable por las propias instituciones del Estado debido a insuperables obstáculos.</p>
+                <div class="space-y-6">
+                    <div class="kpi-card border-l-4 border-[#F6511D]">
+                        <span class="kpi-icon text-[#F6511D]">🚫💰</span>
+                        <h3 class="text-xl font-bold mb-2">Obstáculos Financieros Insalvables</h3>
+                        <p>El Ministerio de Defensa (MINDEF) ha confirmado que no existe presupuesto para este gasto. El número incierto de beneficiarios crearía un impacto fiscal masivo e inasumible para el país.</p>
+                    </div>
+                    <div class="kpi-card border-l-4 border-[#F6511D]">
+                        <span class="kpi-icon text-[#F6511D]">⚖️⛔</span>
+                        <h3 class="text-xl font-bold mb-2">Incoherencia Legal y Discriminación</h3>
+                        <p>La propuesta contradice normativas vigentes, desvirtúa el propósito de leyes anteriores y discriminaría a otro personal militar y policial que también sirvió a la nación en la lucha por la pacificación.</p>
+                    </div>
+                    <div class="kpi-card border-l-4 border-[#F6511D]">
+                        <span class="kpi-icon text-[#F6511D]">⚠️📈</span>
+                        <h3 class="text-xl font-bold mb-2">Beneficio Desproporcionado</h3>
+                        <p>El monto propuesto de S/ 3,390 es considerado desproporcionado, ya que supera significativamente los beneficios que actualmente perciben los "Defensores de la Patria", generando una clara inequidad.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="path-b" class="border-4 border-solid border-[#7FB800] rounded-lg p-6 bg-green-50">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#7FB800]">Camino 2: "Defensor de la Democracia"</h2>
+                 <div class="text-center mb-8">
+                    <span class="text-6xl font-black text-[#7FB800] bg-white px-4 py-2 rounded-lg shadow-lg">RUTA VIABLE Y SEGURA</span>
+                </div>
+                <p class="text-center text-gray-700 mb-8">Esta ruta se basa en leyes ya promulgadas y vigentes, ofreciendo un camino claro y legalmente respaldado para acceder a un beneficio económico real y sostenible.</p>
+                <div class="space-y-6">
+                    <div class="kpi-card border-l-4 border-[#7FB800]">
+                        <span class="kpi-icon text-[#7FB800]">📜✅</span>
+                        <h3 class="text-xl font-bold mb-2">Respaldo Legal Sólido y Vigente</h3>
+                        <p>El beneficio está fundamentado en un conjunto de leyes (N.º 31291, 31177, 24053, 30879), lo que le otorga plena validez y exigibilidad. No es una propuesta, es un derecho establecido.</p>
+                    </div>
+                     <div class="kpi-card border-l-4 border-[#7FB800]">
+                        <span class="kpi-icon text-[#7FB800]">💵📊</span>
+                        <h3 class="text-xl font-bold mb-2">Beneficio Cuantificado y Presupuestado</h3>
+                        <p>El monto de S/ 2,550 es una cifra concreta, vitalicia y su financiamiento está contemplado dentro de los presupuestos ordinarios del Ministerio de Defensa y del Interior.</p>
+                    </div>
+                    <div class="kpi-card border-l-4 border-[#7FB800]">
+                        <span class="kpi-icon text-[#7FB800]">🏛️✔️</span>
+                        <h3 class="text-xl font-bold mb-2">Precedentes Judiciales Favorables</h3>
+                        <p>Existen sentencias del Tribunal Constitucional que respaldan el pago de esta bonificación. Esto proporciona una fuerte seguridad jurídica para quienes cumplen los requisitos y lo solicitan.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="mt-16 flex justify-center">
+            <div class="w-full">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">El Fundamento Legal de la Ruta Viable</h2>
+                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-10">El beneficio para el "Defensor de la Democracia" no depende de una sola ley, sino de una cadena normativa que construye y garantiza el derecho de forma sólida.</p>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-step">
+                        <span class="icon">1️⃣</span>
+                        <div>
+                            <p class="font-bold text-lg">Ley N.º 31291</p>
+                            <p>Establece y define la categoría de "Defensores de la Democracia", reconociendo a un amplio grupo de participantes en la lucha contra el terrorismo.</p>
+                        </div>
+                    </div>
+                    <div class="flowchart-arrow">⬇️</div>
+                    <div class="flowchart-step">
+                        <span class="icon">2️⃣</span>
+                        <div>
+                            <p class="font-bold text-lg">Ley N.º 31177</p>
+                            <p>Incorpora a los excombatientes (Defensores de la Democracia) a los alcances de la Ley N.º 24053, conectándolos con sus beneficios.</p>
+                        </div>
+                    </div>
+                    <div class="flowchart-arrow">⬇️</div>
+                    <div class="flowchart-step">
+                        <span class="icon">3️⃣</span>
+                        <div>
+                            <p class="font-bold text-lg">Leyes N.º 24053 y N.º 30879</p>
+                            <p>Cuantifican y establecen la bonificación mensual de <span class="font-black">S/ 2,550.00</span>, de carácter vitalicio, para los "Defensores de la Patria", beneficio que se hace extensivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Conclusión: La Decisión Inteligente</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-8">Al analizar la viabilidad real, la conclusión es clara. La ruta del "Defensor de la Democracia" es la única que ofrece una probabilidad real y legal de obtener un beneficio económico sostenible.</p>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="viabilityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <p>&copy; 2025 Análisis Informativo. Este contenido es para fines orientativos.</p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: 'Inter'
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    bodyFont: {
+                        size: 14,
+                        family: 'Inter'
+                    },
+                    titleFont: {
+                        size: 16,
+                        family: 'Inter'
+                    }
+                }
+            }
+        };
+
+        const benefitsCtx = document.getElementById('benefitsComparisonChart').getContext('2d');
+        new Chart(benefitsCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Veterano de la Pacificación Nacional (Propuesta)'), 
+                    wrapLabel('Defensor de la Democracia (Vigente)')
+                ],
+                datasets: [{
+                    label: 'Bonificación Mensual (S/)',
+                    data: [3390, 2550],
+                    backgroundColor: ['#FFB400', '#00A6ED'],
+                    borderColor: ['#F6511D', '#0070A3'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'S/ ' + value.toLocaleString();
+                            },
+                            font: { size: 12, family: 'Inter' }
+                        }
+                    },
+                    y: {
+                       ticks: { font: { size: 12, family: 'Inter' } }
+                    }
+                }
+            }
+        });
+
+        const viabilityCtx = document.getElementById('viabilityChart').getContext('2d');
+        new Chart(viabilityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ruta Viable (Defensor de la Democracia)', 'Ruta Inviable (Propuesta)'],
+                datasets: [{
+                    label: 'Probabilidad de Éxito',
+                    data: [99, 1],
+                    backgroundColor: ['#7FB800', '#F6511D'],
+                    borderColor: ['#ffffff'],
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                cutout: '60%',
+            }
+        });
+    </script>
+</body>
+</html>
